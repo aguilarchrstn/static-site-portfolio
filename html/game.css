@@ -1,0 +1,33 @@
+/* --- COSMIC DODGE GAME STYLES --- */
+
+/* Utility to ensure the modal displays correctly when active */
+.modal-visible {
+    display: flex !important;
+    opacity: 1 !important;
+}
+
+/* Hide the custom portfolio cursor when inside the game to avoid double cursors */
+#game-modal {
+    cursor: default;
+}
+
+/* Ensure the game canvas fits on smaller screens */
+#game-canvas {
+    max-width: 95vw;
+    max-height: 80vh;
+    /* Subtle radial gradient background for deep space feel */
+    background: radial-gradient(circle at center, #1a1a2e 0%, #000000 100%);
+    cursor: none; /* Hide default cursor inside canvas */
+}
+
+/* Shimmer animation for the Launch Button hover effect */
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Class to apply the shimmer animation (referenced in index.html) */
+.group-hover\.animate-shimmer .animate-shimmer {
+    animation: shimmer 1.5s infinite;
+}
