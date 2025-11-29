@@ -9,6 +9,8 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
     
+    <link rel="stylesheet" href="game.css"> 
+    
     <script>
         // Tailwind Custom Configuration
         tailwind.config = {
@@ -263,6 +265,17 @@
                         <div id="contact-info" class="pt-4 border-t border-gray-700 text-md md:text-lg text-gray-400 space-y-1">
                             </div>
 
+                        <div class="pt-8">
+                            <button id="start-game-btn" class="group relative px-8 py-3 bg-transparent overflow-hidden rounded-full border border-cosmic-blue text-white shadow-cosmic-blue transition-all duration-300 hover:scale-105 hover:bg-cosmic-blue/10">
+                                <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-cosmic-blue/50 to-transparent -translate-x-full group-hover:animate-shimmer"></span>
+                                <span class="relative flex items-center font-heading font-bold tracking-wider">
+                                    <svg class="w-5 h-5 mr-2 animate-pulse" fill="currentColor" viewBox="0 0 24 24"><path d="M21 11H14V4H10V11H3V13H10V20H14V13H21V11Z"/></svg>
+                                    LAUNCH MISSION (PLAY GAME)
+                                </span>
+                            </button>
+                            
+                        </div>
+                        
                     </div>
 
                     <div class="flex justify-center lg:order-last">
@@ -499,6 +512,36 @@
             <p class="text-gray-600 text-xs">&copy; 2024 Christian S. Aguilar | Systems Portfolio.</p>
         </div>
     </footer>
+
+    <div id="game-modal" class="fixed inset-0 z-[100] hidden bg-black/95 backdrop-blur-md flex-col justify-center items-center opacity-0 transition-opacity duration-500">
+        
+        <button id="close-game-btn" class="absolute top-6 right-6 text-gray-400 hover:text-white transition-colors z-50">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+
+        <div class="relative">
+            <canvas id="game-canvas" class="border-2 border-cosmic-blue rounded-lg shadow-[0_0_30px_rgba(77,79,255,0.3)]"></canvas>
+            
+            <div class="absolute top-4 left-4 font-heading text-xl text-solar-yellow pointer-events-none select-none">
+                SCORE: <span id="game-score">0</span>
+            </div>
+
+            <div id="game-start-screen" class="absolute inset-0 flex flex-col items-center justify-center bg-black/60 rounded-lg backdrop-blur-sm z-10">
+                <h2 class="text-4xl md:text-5xl font-heading text-transparent bg-clip-text bg-gradient-to-r from-cosmic-blue to-nebula-pink mb-4 text-center">COSMIC DODGE</h2>
+                <p class="text-gray-300 mb-8 font-sans text-center px-4">Pilot your ship with your mouse.<br>Dodge the falling asteroids!</p>
+                <button id="play-btn" class="px-8 py-3 bg-cosmic-blue text-white font-bold rounded hover:bg-blue-600 transition shadow-cosmic-blue">START ENGINE</button>
+            </div>
+
+            <div id="game-over-screen" class="absolute inset-0 hidden flex-col items-center justify-center bg-black/80 rounded-lg backdrop-blur-sm z-10">
+                <h2 class="text-4xl font-heading text-red-500 mb-2">CRITICAL FAILURE</h2>
+                <p class="text-xl text-gray-200 mb-6">Final Score: <span id="final-score" class="text-solar-yellow">0</span></p>
+                <button id="restart-btn" class="px-8 py-3 border border-nebula-pink text-nebula-pink font-bold rounded hover:bg-nebula-pink hover:text-white transition">RETRY MISSION</button>
+            </div>
+        </div>
+        
+        <p class="mt-4 text-gray-500 text-sm font-sans">Tip: Keep your cursor inside the border.</p>
+    </div>
+
 
 <script>
         // --- SVG ICON PATHS (Material Design Icons for clean aesthetic) ---
@@ -1029,5 +1072,8 @@
 
         });
     </script>
+    
+    <script src="game.js"></script>
+
 </body>
 </html>
